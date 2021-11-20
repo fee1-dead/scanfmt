@@ -20,6 +20,14 @@ In the above grammar, `text` must not contain any `'{'` or `'}'` characters.
 ## Usage
 
 ```rust
-fn my_format(s: &str) -> (u16, u32) {
-    
+use scanfmt::{scanfmt, ScanError};
+fn my_format(s: &str) -> Result<(u16, u32), ScanError> {
+    let a;
+    let b;
+    scanfmt!(s, "a: {}, b: {}", a, b);
+    Ok((a, b))
 }
+```
+
+Note that scanfmt! requires the function to return a result to ensure that
+variables are always initialized.
