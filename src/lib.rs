@@ -17,7 +17,7 @@ pub enum ScanError {
     LiteralMismatch,
     LiteralNotFound,
     Eof,
-    Custom(Box<dyn Error>),
+    Custom(Box<dyn Error + Send + Sync>),
 }
 
 /// A trait for something that can be scanned.
